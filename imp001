@@ -1,0 +1,14 @@
+led <- hardware.pin1;
+
+led.configure(DIGITAL_OUT);
+
+state <- 0;
+
+function blink() {  
+  state = 1-state;    
+  led.write(state);  
+  imp.wakeup(0.5, blink);
+}
+
+blink();
+
